@@ -1,0 +1,32 @@
+<h1 class="ui dividing header">Flight Search Application</h1>
+  
+   <form class="ui form" [formGroup]="flightForm" (ngSubmit)="onSubmit()">
+      <app-input inputType="text" label="Source City" [control]="flightForm.controls.source"></app-input>
+      <app-input inputType="text" label="Destination City" [control]="flightForm.controls.destination"></app-input>
+      <app-input inputType="date" label="Departure Date" [control]="flightForm.controls.departure"></app-input>
+      <app-input inputType="date" label="Return Date" [control]="flightForm.controls.returndate"></app-input>
+      <app-input inputType="number" label="No. of Passenger" [control]="flightForm.controls.passenger"></app-input>
+      <button type="submit" class="ui button submit primary" [disabled]="flightForm.invalid">
+        Submit
+      </button>    
+      <button class="ui button warning" (click)="onReset()" type="button">
+        Reset
+      </button>
+    <div *ngIf="flightForm.controls.source.touched &&
+      flightForm.controls.destination.touched &&
+      flightForm.errors" class="ui basic red label">
+      <p *ngIf="flightForm.errors.cityMatch">
+        Same Source and Destination City Not Allowed
+      </p>
+      <p *ngIf="flightForm.errors.noConnection">
+        No Internet connection or backend server 
+      </p>
+      <p *ngIf="flightForm.errors.unknownError">
+        Unknown Error Failed to sign up!
+      </p>
+    </div>   
+  </form>
+
+<div class="ui divider"></div>
+
+<app-table [formData]="result"></app-table>

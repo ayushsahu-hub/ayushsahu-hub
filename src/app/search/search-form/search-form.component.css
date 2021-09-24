@@ -1,0 +1,13 @@
+.basic.label {
+  margin-bottom: 0.5em;
+}
+
+button {
+  margin-bottom: 0.5em;
+}
+
+.ui.dividing.header{
+  display:block;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}

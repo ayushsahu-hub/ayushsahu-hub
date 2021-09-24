@@ -1,0 +1,21 @@
+<table *ngIf="formData.length" class="ui celled table">
+  <thead>
+    <tr><th>Source</th>
+    <th>Destination</th>
+    <th>Departure Date</th>
+    <th>Return Date</th>
+    <th>Airlines</th>
+   </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of formData">
+      <td data-label="Source">{{ item.source }}</td>
+      <td data-label="Destination">{{ item.destination }}</td>
+      <td data-label="Departure Date">{{ item.departuredate }}</td>
+      <td data-label="Return Date">{{ item.returndate }}</td>
+      <td data-label="Airlines">{{ item.Airlines }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 *ngIf="formData.length==0">No Flights available</h3>

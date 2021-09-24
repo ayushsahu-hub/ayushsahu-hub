@@ -1,0 +1,25 @@
+  <div class="field">
+    <label>{{ label }}</label>
+    <input [type]="inputType" [formControl]="control">
+    <div *ngIf="showErrors()" class="ui pointing red basic label">
+      <p *ngIf="control.errors.required">
+        Value is required
+      </p>
+      <p *ngIf="control.errors.minlength">
+        Value you entered is 
+        {{ control.errors.minlength.actualLength }} characters long,it must be
+        {{ control.errors.minlength.requiredLength }} characters.
+      </p>
+      <p *ngIf="control.errors.maxlength">
+         Value you entered is 
+         {{ control.errors.maxlength.actualLength }} characters long,it must be
+        {{ control.errors.maxlength.requiredLength }} characters.
+      </p>
+      <p *ngIf="control.errors.min || control.errors.max">
+        Value must be between 1 to 6 passengers only
+      </p>
+      <p *ngIf="control.errors.pattern">
+         Invalid format enter only City Codes
+      </p>
+    </div>
+  </div> 
