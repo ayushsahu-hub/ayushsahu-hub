@@ -10,11 +10,8 @@ export class MatchCity implements Validators {
   validate(formGroup:FormGroup) {
     const { source, destination } = formGroup.value;
     
-    let Source = source.toLowerCase(),
-    Destination = destination.toLowerCase();
-    
-    if (Source && Destination) {
-      if (Source === Destination) {
+    if (source && destination) {
+      if (source === destination) {
         return {cityMatch:true};
       } else {
         return null;

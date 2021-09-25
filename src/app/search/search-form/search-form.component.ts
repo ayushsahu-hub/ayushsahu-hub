@@ -9,25 +9,14 @@ import { SearchService } from '../search.service';
   styleUrls: ['./search-form.component.css']
 })
 export class SearchFormComponent implements OnInit {
-  
+  todays:any;
+  result:any=[];
+
   flightForm = new FormGroup({
-    source: new FormControl('',[
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(3),
-      Validators.pattern(/^[a-zA-Z]+$/)
-    ]),
-    destination :new FormControl('',[
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(3),
-      Validators.pattern(/^[a-zA-Z]+$/)
-    ]),
-    departure: new FormControl('',[
-      Validators.required
-    ]),
-    returndate: new FormControl('',[
-      Validators.required]),
+    source: new FormControl('',[Validators.required]),
+    destination :new FormControl('',[Validators.required]),
+    departure: new FormControl('',[Validators.required]),
+    returndate: new FormControl('',[Validators.required]),
     passenger: new FormControl('',[
     Validators.required,
     Validators.min(1),
@@ -35,10 +24,23 @@ export class SearchFormComponent implements OnInit {
     ])  
   },{validators:[this.matchCity.validate]});
   
-  constructor(private matchCity:MatchCity,private searchService:SearchService) { }
-   result:any;
+  constructor(private matchCity:MatchCity,private searchService:SearchService) { }   
 
   ngOnInit(): void {
+    this.getDates();
+  }
+
+  getDates(){
+    let toDate:any = new Date().getDate();
+    if (toDate < 10) {
+      toDate = '0'+ toDate;
+    }
+    let month:any = new Date().getMonth()+1;
+    if (month<10) {
+      month ='0'+month;
+    }
+    let year:any = new Date().getFullYear();
+    this.todays = `${year}-${month}-${toDate}`;
   }
 
   onSubmit(){ 
@@ -59,8 +61,7 @@ export class SearchFormComponent implements OnInit {
       }
     });   
   }
-
   onReset(){
     this.flightForm.reset();
-  }
+  }   
 }

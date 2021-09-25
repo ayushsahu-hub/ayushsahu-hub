@@ -1,10 +1,24 @@
 <h1 class="ui dividing header">Flight Search Application</h1>
   
    <form class="ui form" [formGroup]="flightForm" (ngSubmit)="onSubmit()">
-      <app-input inputType="text" label="Source City" [control]="flightForm.controls.source"></app-input>
-      <app-input inputType="text" label="Destination City" [control]="flightForm.controls.destination"></app-input>
-      <app-input inputType="date" label="Departure Date" [control]="flightForm.controls.departure"></app-input>
-      <app-input inputType="date" label="Return Date" [control]="flightForm.controls.returndate"></app-input>
+      <label>Source City</label>
+      <select formControlName="source" class="ui dropdown">
+        <option value="DEL">DELHI</option>
+        <option value="MUM">MUMBAI</option>
+        <option value="CHE">CHENNAI</option>
+        <option value="KOL">KOLKATA</option>
+      </select>
+
+      <label>Destination City</label>
+      <select formControlName="destination" class="ui dropdown">
+        <option value="DEL">DELHI</option>
+        <option value="MUM">MUMBAI</option>
+        <option value="CHE">CHENNAI</option>
+        <option value="KOL">KOLKATA</option>
+      </select>
+
+      <app-input inputType="date" [mindate]="todays" label="Departure Date" [control]="flightForm.controls.departure"></app-input>
+      <app-input inputType="date" [mindate]="todays" label="Return Date" [control]="flightForm.controls.returndate"></app-input>
       <app-input inputType="number" label="No. of Passenger" [control]="flightForm.controls.passenger"></app-input>
       <button type="submit" class="ui button submit primary" [disabled]="flightForm.invalid">
         Submit
