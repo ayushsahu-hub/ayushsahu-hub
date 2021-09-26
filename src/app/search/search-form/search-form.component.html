@@ -17,7 +17,9 @@
         <option value="KOL">KOLKATA</option>
       </select>
 
-      <app-input inputType="date" [mindate]="todays" label="Departure Date" [control]="flightForm.controls.departure"></app-input>
+      <app-input inputType="date" [mindate]="todays" [maxdate]="flightForm.controls.returndate.value" 
+        label="Departure Date" [control]="flightForm.controls.departure">
+      </app-input>
       <app-input inputType="date" [mindate]="todays" label="Return Date" [control]="flightForm.controls.returndate"></app-input>
       <app-input inputType="number" label="No. of Passenger" [control]="flightForm.controls.passenger"></app-input>
       <button type="submit" class="ui button submit primary" [disabled]="flightForm.invalid">
@@ -44,3 +46,4 @@
 <div class="ui divider"></div>
 
 <app-table [formData]="result"></app-table>
+

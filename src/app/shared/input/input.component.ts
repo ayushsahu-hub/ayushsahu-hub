@@ -11,6 +11,7 @@ export class InputComponent implements OnInit {
   @Input()control:FormControl;
   @Input()inputType:string;
   @Input() mindate:string;
+  @Input() maxdate:string;
   constructor() { }
 
   ngOnInit(): void {

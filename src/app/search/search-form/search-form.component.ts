@@ -30,7 +30,7 @@ export class SearchFormComponent implements OnInit {
     this.getDates();
   }
 
-  getDates(){
+  getDates() {
     let toDate:any = new Date().getDate();
     if (toDate < 10) {
       toDate = '0'+ toDate;
@@ -63,5 +63,6 @@ export class SearchFormComponent implements OnInit {
   }
   onReset(){
     this.flightForm.reset();
+    this.result = [];
   }   
 }
